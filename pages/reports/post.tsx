@@ -1,3 +1,10 @@
+import {useAuthenticator} from "@aws-amplify/ui-react";
+
 export default function Post() {
-    return <h1>Posty the post</h1>
+    const {user, signOut} = useAuthenticator();
+    return(
+        <>
+            <h1>{user?.signInDetails?.loginId} todos</h1>
+            <h1>Posty the post</h1>
+        </>)
 }
