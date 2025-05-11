@@ -8,10 +8,82 @@ specifies that any user authenticated via an API key can "create", "read",
 =========================================================================*/
 const schema = a.schema({
   Todo: a
-    .model({
-      content: a.string(),
-    })
-    .authorization((allow) => [allow.owner()]),
+      .model({
+        content: a.string(),
+        isDone: a.boolean(),
+        group: a.string(),
+        // This is built in lastUpdate: a.datetime()
+      }).authorization(allow => [
+        allow.owner(),
+        allow.groupDefinedIn('group'),
+      ]),
+
+  ///USERS TABLE- No Edit from USER ///
+  DWUser: a.model({
+    // dwUserId: a.id(),
+    firstName: a.string(),
+    lastName: a.string(),
+    email: a.string(),
+    enabled: a.boolean(),
+    lastLogin: a.datetime(),
+    dateCreated: a.datetime(),
+    expires: a.datetime(),
+    groupName: a.string(),
+    /// RELATIONSHIPS ///
+    customers: a.hasMany('Customer','customerId'),
+    invoices: a.hasMany('Invoice', 'invoiceId'),
+  }).authorization(allow => [
+    allow.owner().to(['read']),
+  ]),
+
+  ///CUSTOMERS TABLE///
+  Customer: a.model({
+    customerId: a.id(),
+    //RELATIONSHIPS//
+    dwUser: a.belongsTo('DWUser','customerId'),
+    invoices : a.hasMany('Invoice','invoiceId'),
+  }).authorization(allow => [
+    allow.owner(),
+    //allow.groupDefinedIn('group'),
+  ]),
+
+  ///INVOICE TABLE///
+  Invoice: a.model({
+    invoiceId: a.id(),
+    invoiceNumber: a.integer().required(),
+    invoiceStatus: a.enum(["Estimate","Paid","Outstanding"]),
+    group: a.string(),
+    //RELATIONSHIPS//
+    customer: a.belongsTo('Customer', 'invoiceId'),
+    dwUser: a.belongsTo('DWUser','invoiceId'),
+    vehicles: a.hasMany('Vehicle','vehicleId'),
+  }).authorization(allow => [
+    allow.owner(),
+    allow.groupDefinedIn('group'),
+  ]),
+
+  Vehicle: a.model({
+    vehicleId: a.id(),
+    group: a.string(),
+    //RELATIONSHIPS//
+    invoice: a.belongsTo('Invoice', 'vehicleId'),
+    dents: a.hasMany('Dent','dentId'),
+  }).authorization(allow => [
+    allow.owner(),
+    allow.groupDefinedIn('group'),
+  ]),
+  Dent: a.model({
+    dentId: a.id(),
+    group: a.string(),
+    //RELATIONSHIPS//
+    vehicle: a.belongsTo('Vehicle', 'dentId'),
+
+  }).authorization(allow => [
+    allow.owner(),
+    allow.groupDefinedIn('group'),
+  ]),
+///***///
+
 });
 
 export type Schema = ClientSchema<typeof schema>;
