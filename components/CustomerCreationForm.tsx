@@ -20,7 +20,7 @@ const [formData, setFormData] = useState({
     customerZip: '',
 });
 
-const handleChange = (event) => {
+const handleChange = (event: { target: { name: any; value: any; }; }) => {
     const { name, value } = event.target;
     console.log(formData);
     setFormData({
