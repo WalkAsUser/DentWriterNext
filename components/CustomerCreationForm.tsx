@@ -126,8 +126,8 @@ const handleChange = (event) => {
                             name={'customerState'}
                             style={{ width: "100%" }}
                             variant="outlined"
-                            value={usState}
-                            onChange={usStateHandleChange}
+                            value={formData.customerState}
+                            onChange={handleChange}
                             select
                             label="State"
                             margin={'dense'}
@@ -183,7 +183,7 @@ const handleChange = (event) => {
                             id="zipcode"
                             label="Zipcode"
                             margin={'dense'}
-                            value={formData.customerCity}
+                            value={formData.customerPhone}
                             onChange={handleChange}
                         />
 
