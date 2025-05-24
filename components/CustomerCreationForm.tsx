@@ -9,11 +9,6 @@ export default function CustomerCreationForm() {
 
 const USStates = USSTATES;
 
-const [usState, setUsState] = useState('');
-const usStateHandleChange = (event: { target: { value: string; }; }) => {
-    setUsState(event.target.value as string);
-}
-
 const [formData, setFormData] = useState({
     customerName: '',
     customerPhone: '',
