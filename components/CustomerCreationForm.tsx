@@ -10,6 +10,7 @@ export default function CustomerCreationForm() {
 const USStates = USSTATES;
 
 const [formData, setFormData] = useState({
+    //NAME FIELD MUST MATCH THE NAME OF THE VARIABLE//
     customerName: '',
     customerPhone: '',
     customerEmail: '',
@@ -84,7 +85,7 @@ const handleChange = (event: { target: { name: any; value: any; }; }) => {
                         />
                         <TextField
                             //CUSTOMER ADDRESS//
-                            name={'customerAddressOne'}
+                            name={'customerAddress1'}
                             fullWidth
                             required
                             id='address1'
@@ -95,7 +96,7 @@ const handleChange = (event: { target: { name: any; value: any; }; }) => {
                         />
                         <TextField
                             //CUSTOMER ADDRESS2//
-                            name={'customerAddressTwo'}
+                            name={'customerAddress2'}
                             fullWidth
                             required
                             id='address2'
@@ -160,7 +161,7 @@ const handleChange = (event: { target: { name: any; value: any; }; }) => {
                         </Select>
                 */}
                         <TextField
-                            //CUSTOMER PHONE//
+                            //CUSTOMER ZIPCODE//
 
                             type={'number'}
                             sx={{
@@ -178,7 +179,7 @@ const handleChange = (event: { target: { name: any; value: any; }; }) => {
                             id="zipcode"
                             label="Zipcode"
                             margin={'dense'}
-                            value={formData.customerPhone}
+                            value={formData.customerZip}
                             onChange={handleChange}
                         />
 
