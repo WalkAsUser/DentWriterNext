@@ -10,9 +10,29 @@ export default function CustomerCreationForm() {
 const USStates = USSTATES;
 
 const [usState, setUsState] = useState('');
-const handleChange = (event: { target: { value: string; }; }) => {
+const usStateHandleChange = (event: { target: { value: string; }; }) => {
     setUsState(event.target.value as string);
 }
+
+const [formData, setFormData] = useState({
+    customerName: '',
+    customerPhone: '',
+    customerEmail: '',
+    customerAddress1: '',
+    customerAddress2: '',
+    customerCity: '',
+    customerState: '',
+    customerZip: '',
+});
+
+const handleChange = (event) => {
+    const { name, value } = event.target;
+    console.log(formData);
+    setFormData({
+        ...formData,
+        [name]: value,
+    });
+};
 
 
     return (
@@ -31,6 +51,8 @@ const handleChange = (event: { target: { value: string; }; }) => {
                             id="customerName"
                             label="Customer Name"
                             margin={'dense'}
+                            value={formData.customerName}
+                            onChange={handleChange}
                         />
                         <TextField
                             //CUSTOMER PHONE//
@@ -50,6 +72,8 @@ const handleChange = (event: { target: { value: string; }; }) => {
                             id="customerPhone"
                             label="Phone Number"
                             margin={'dense'}
+                            value={formData.customerPhone}
+                            onChange={handleChange}
                         />
                         <TextField
                             //CUSTOMER EMAIL//
@@ -60,6 +84,8 @@ const handleChange = (event: { target: { value: string; }; }) => {
                             label="Email"
                             type='email'
                             margin={'dense'}
+                            value={formData.customerEmail}
+                            onChange={handleChange}
                         />
                         <TextField
                             //CUSTOMER ADDRESS//
@@ -69,6 +95,8 @@ const handleChange = (event: { target: { value: string; }; }) => {
                             id='address1'
                             label="Address 1"
                             margin={'dense'}
+                            value={formData.customerAddress1}
+                            onChange={handleChange}
                         />
                         <TextField
                             //CUSTOMER ADDRESS2//
@@ -78,6 +106,8 @@ const handleChange = (event: { target: { value: string; }; }) => {
                             id='address2'
                             label="Address 2"
                             margin={'dense'}
+                            value={formData.customerAddress2}
+                            onChange={handleChange}
                         />
                         <TextField
                             //CUSTOMER CITY//
@@ -87,6 +117,8 @@ const handleChange = (event: { target: { value: string; }; }) => {
                             id='City'
                             label="City"
                             margin={'dense'}
+                            value={formData.customerCity}
+                            onChange={handleChange}
                         />
                         <InputLabel id='USStateSelect'>Label</InputLabel>
                         <TextField
@@ -95,7 +127,7 @@ const handleChange = (event: { target: { value: string; }; }) => {
                             style={{ width: "100%" }}
                             variant="outlined"
                             value={usState}
-                            onChange={handleChange}
+                            onChange={usStateHandleChange}
                             select
                             label="State"
                             margin={'dense'}
@@ -151,6 +183,8 @@ const handleChange = (event: { target: { value: string; }; }) => {
                             id="zipcode"
                             label="Zipcode"
                             margin={'dense'}
+                            value={formData.customerCity}
+                            onChange={handleChange}
                         />
 
 
