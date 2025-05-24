@@ -55,6 +55,7 @@ export default function App() {
             </div>
             <button onClick={signOut}>Sign out</button>
             <Link href="/reports/post">Reports</Link>
+            <Link href="tests/testpage">TestPage</Link>
         </main>
-    );
+    )
 }
