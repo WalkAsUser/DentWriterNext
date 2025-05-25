@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import {CssBaseline, MenuItem, Select, TextField, FormControl, InputLabel} from "@mui/material";
 import {USSTATES} from "@/static_data/stateList";
 import React, {useState} from "react";
+import createCustomerIO from "@/iofunctions/createCustomerIO";
 
 export default function CustomerCreationForm() {
 //Please Work//
@@ -23,18 +24,25 @@ const [formData, setFormData] = useState({
 
 const handleChange = (event: { target: { name: any; value: any; }; }) => {
     const { name, value } = event.target;
-    console.log(formData);
+    //console.log(formData);
     setFormData({
         ...formData,
         [name]: value,
     });
 };
 
+const handleSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    //console.log(formData);
+    createCustomerIO(formData);
+}
+
 
     return (
             <Box
                 //component="form"
                 sx={{flexGrow: 1}}>
+                <form onSubmit={handleSubmit}>
                 <FormControl fullWidth>
                     <h1><b>THIS IS STRAIGHT OUTA COMPONENTS</b></h1>
                     <CssBaseline/>
@@ -185,9 +193,10 @@ const handleChange = (event: { target: { name: any; value: any; }; }) => {
 
 
 
-                        <Button variant="contained">Create Customer</Button>
+                        <Button variant="contained" type={'submit'}>Create Customer</Button>
                     </Container>
                 </FormControl>
+                </form>
             </Box>
     )
 }

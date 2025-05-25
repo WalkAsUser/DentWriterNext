@@ -39,6 +39,7 @@ const schema = a.schema({
   ///CUSTOMERS TABLE///
   Customer: a.model({
     customerId: a.id(),
+    customerName: a.string(),
     //RELATIONSHIPS//
     dwUser: a.belongsTo('DWUser','customerId'),
     invoices : a.hasMany('Invoice','invoiceId'),
