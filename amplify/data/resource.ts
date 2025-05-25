@@ -40,6 +40,13 @@ const schema = a.schema({
   Customer: a.model({
     customerId: a.id(),
     customerName: a.string(),
+    customerPhone: a.string(),
+    customerEmail: a.string(),
+    customerAddress1: a.string(),
+    customerAddress2: a.string(),
+    customerCity: a.string(),
+    customerState: a.string(),
+    customerZip: a.string(),
     //RELATIONSHIPS//
     dwUser: a.belongsTo('DWUser','customerId'),
     invoices : a.hasMany('Invoice','invoiceId'),
