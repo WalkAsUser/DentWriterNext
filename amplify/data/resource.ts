@@ -20,7 +20,6 @@ const schema = a.schema({
 
   ///USERS TABLE- No Edit from USER ///
   DWUser: a.model({
-    // dwUserId: a.id(),
     firstName: a.string(),
     lastName: a.string(),
     email: a.string(),
@@ -90,6 +89,22 @@ const schema = a.schema({
     allow.owner(),
     allow.groupDefinedIn('group'),
   ]),
+  Member: a.model({
+    name: a.string().required(),
+    // 1. Create a reference field
+    teamId: a.id(),
+    // 2. Create a belongsTo relationship with the reference field
+    team: a.belongsTo('Team', 'teamId'),
+  }),
+
+  Team: a.model({
+    teamName: a.string().required(),
+    mantra: a.string().required(),
+    // 3. Create a hasMany relationship with the reference field
+    //    from the `Member`s model.
+    members: a.hasMany('Member', 'teamId'),
+  }),
+
 ///***///
 
 });
