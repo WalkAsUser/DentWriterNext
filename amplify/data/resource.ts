@@ -95,7 +95,10 @@ const schema = a.schema({
     teamId: a.id(),
     // 2. Create a belongsTo relationship with the reference field
     team: a.belongsTo('Team', 'teamId'),
-  }),
+  }).authorization((allow) => [
+      allow.authenticated(),
+      allow.publicApiKey(),
+  ]),
 
   Team: a.model({
     teamName: a.string().required(),
@@ -103,7 +106,10 @@ const schema = a.schema({
     // 3. Create a hasMany relationship with the reference field
     //    from the `Member`s model.
     members: a.hasMany('Member', 'teamId'),
-  }),
+  }).authorization((allow) => [
+    allow.authenticated(),
+    allow.publicApiKey(),
+    ])
 
 ///***///
 
