@@ -29,15 +29,12 @@ const schema = a.schema({
     expires: a.datetime(),
     groupName: a.string(),
     /// RELATIONSHIPS ///
-    customers: a.hasMany('Customer','customerId'),
-    invoices: a.hasMany('Invoice', 'invoiceId'),
   }).authorization(allow => [
     allow.owner().to(['read']),
   ]),
 
   ///CUSTOMERS TABLE///
   Customer: a.model({
-    customerId: a.id(),
     customerName: a.string(),
     customerPhone: a.string(),
     customerEmail: a.string(),
@@ -47,8 +44,7 @@ const schema = a.schema({
     customerState: a.string(),
     customerZip: a.string(),
     //RELATIONSHIPS//
-    dwUser: a.belongsTo('DWUser','customerId'),
-    invoices : a.hasMany('Invoice','invoiceId'),
+    invoices : a.hasMany('Invoice','customerId'),
   }).authorization(allow => [
     allow.owner(),
     //allow.groupDefinedIn('group'),
@@ -56,35 +52,34 @@ const schema = a.schema({
 
   ///INVOICE TABLE///
   Invoice: a.model({
-    invoiceId: a.id(),
     invoiceNumber: a.integer().required(),
     invoiceStatus: a.enum(["Estimate","Paid","Outstanding"]),
     group: a.string(),
     //RELATIONSHIPS//
-    customer: a.belongsTo('Customer', 'invoiceId'),
-    dwUser: a.belongsTo('DWUser','invoiceId'),
-    vehicles: a.hasMany('Vehicle','vehicleId'),
+    customerId: a.id(),
+    customer: a.belongsTo('Customer', 'customerId'),
+    vehicles: a.hasMany('Vehicle','invoiceId'),
   }).authorization(allow => [
     allow.owner(),
     allow.groupDefinedIn('group'),
   ]),
 
   Vehicle: a.model({
-    vehicleId: a.id(),
     group: a.string(),
     //RELATIONSHIPS//
-    invoice: a.belongsTo('Invoice', 'vehicleId'),
-    dents: a.hasMany('Dent','dentId'),
+    invoiceId: a.id(),
+    invoice: a.belongsTo('Invoice', 'invoiceId'),
+    //
+    dents: a.hasMany('Dent','vehicleId'),
   }).authorization(allow => [
     allow.owner(),
     allow.groupDefinedIn('group'),
   ]),
   Dent: a.model({
-    dentId: a.id(),
     group: a.string(),
+    vehicleId: a.id(),
     //RELATIONSHIPS//
-    vehicle: a.belongsTo('Vehicle', 'dentId'),
-
+    vehicle: a.belongsTo('Vehicle', 'vehicleId'),
   }).authorization(allow => [
     allow.owner(),
     allow.groupDefinedIn('group'),
@@ -99,7 +94,7 @@ const schema = a.schema({
       allow.authenticated(),
       allow.publicApiKey(),
   ]),
-
+//THIS ACTUALLY CREATES A LINK BETWEEN THE MEMBER AND THE DEFAULT ID OF TEAM
   Team: a.model({
     teamName: a.string().required(),
     mantra: a.string().required(),
