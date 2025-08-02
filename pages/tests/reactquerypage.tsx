@@ -28,5 +28,10 @@ export default function ReactQueryPage() {
             return customers;
         },
     });
-  return <div>React Query Page</div>
+  return (
+      <>
+    <div>React Query Page</div>
+    <p>{customers.toString()}</p>
+      </>
+  )
 }
