@@ -25,7 +25,7 @@ export default function ReactQueryPage() {
             //if (isError) return <div>Error: {error.message}</div>;
             return (
                 <ul>
-                    {allCustomers.items?.map((customer) => (
+                    {allCustomers.map((customer) => (
                         <li key={customer.id}>{customer.customerName}</li>
                     ))}
                 </ul>
