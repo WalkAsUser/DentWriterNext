@@ -59,6 +59,9 @@ export default function App() {
             <button onClick={signOut}>Sign out</button>
             <Link href="/reports/post">Reports</Link>
             <Link href="tests/testpage">TestPage</Link>
+            <p>
+            <Link href="tests/reactquerypage">TestPage</Link>
+            </p>
         </main>
     )
 }
