@@ -18,20 +18,21 @@ export default function ReactQueryPage() {
         queryFn: async () => {
             const response = await client.models.Customer.list();
 
+            const allCustomers = response.data;
 
-            const customers = response.data;
+            if (!allCustomers) return null;
+            //if (isLoading) return <div>Loading data...</div>;
+            //if (isError) return <div>Error: {error.message}</div>;
+            return (
+                <ul>
+                    {allCustomers.items.map((customer) => (
+                        <li key={customer.id}>{customer.customerName}</li>
+                    ))}
+                </ul>
+            )
 
 
-            if (!customers) return null;
 
-            console.log(customers);
-            return customers;
         },
     });
-  return (
-      <>
-    <div>React Query Page</div>
-    <p>{customers.toString()}</p>
-      </>
-  )
 }
