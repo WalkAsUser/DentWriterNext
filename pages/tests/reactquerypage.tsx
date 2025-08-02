@@ -24,7 +24,7 @@ export default function ReactQueryPage() {
 
             if (!customers) return null;
 
-
+            console.log(customers);
             return customers;
         },
     });
