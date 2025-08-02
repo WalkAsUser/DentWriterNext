@@ -21,18 +21,11 @@ export default function ReactQueryPage() {
             const allCustomers = response.data;
 
             if (!allCustomers) return null;
-            //if (isLoading) return <div>Loading data...</div>;
-            //if (isError) return <div>Error: {error.message}</div>;
-            return (
-                <ul>
-                    {allCustomers.map((customer) => (
-                        <li key={customer.id}>{customer.customerName}</li>
-                    ))}
-                </ul>
-            )
-
-
+            return allCustomers;
 
         },
     });
+    return(
+        <><p>{customers.toString()}</p></>
+    )
 }
