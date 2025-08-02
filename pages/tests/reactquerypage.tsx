@@ -26,5 +26,7 @@ export default function ReactQueryPage() {
 
         },
     });
-
+    console.log(customers);
+    return (<p>Outside the box</p>);
 }
+
