@@ -1,6 +1,7 @@
 import type { Schema } from '../amplify/data/resource'
 import { generateClient } from 'aws-amplify/data'
 
+//may need to change the import to include an at symbol
 const client = generateClient<Schema>()
 
 
