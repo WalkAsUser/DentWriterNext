@@ -21,11 +21,10 @@ export default function ReactQueryPage() {
             const allCustomers = response.data;
 
             if (!allCustomers) return null;
+            console.log("is this doing anything at all")
             return allCustomers;
 
         },
     });
-    return(
-        <><p>{customers.toString()}</p></>
-    )
+
 }
