@@ -27,6 +27,14 @@ export default function ReactQueryPage() {
         },
     });
     console.log(customers);
-    return (<p>Outside the box</p>);
+    return (
+        <>
+        <ul>
+            {customers?.map((customer) => (
+                <li key={customer.id}>{customer.customerName}</li>
+            ))}
+        </ul>
+        <p>Outside the box</p>
+        </>);
 }
 
