@@ -9,10 +9,11 @@ const client = generateClient<Schema>();
 export default function ReactQueryPage() {
 
     const {
+        isPending,
+        isError,
         data: customers,
-        isLoading,
-        isSuccess,
-        isError: isErrorQuery,
+        error
+
     } = useQuery({
         queryKey: ["customers"],
         queryFn: async () => {
@@ -20,12 +21,20 @@ export default function ReactQueryPage() {
 
             const allCustomers = response.data;
 
+
             if (!allCustomers) return null;
             console.log("is this doing anything at all")
             return allCustomers;
 
         },
     });
+    if (isPending) {
+        return <span>Loading...</span>
+    }
+
+    if (isError) {
+        return <span>Error: {error.message}</span>
+    }
     console.log(customers);
     return (
         <>
