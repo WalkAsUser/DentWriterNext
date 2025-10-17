@@ -7,7 +7,7 @@ const client = generateClient<Schema>();
 
 
 export default function ReactQueryPage() {
-
+    var keyName = "customers";
     const {
         isPending,
         isError,
@@ -16,7 +16,7 @@ export default function ReactQueryPage() {
         error
 
     } = useQuery({
-        queryKey: ["customers"],
+        queryKey: [keyName],
         queryFn: async () => {
             const response = await client.models.Customer.list();
 
