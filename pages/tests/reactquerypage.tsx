@@ -11,7 +11,8 @@ export default function ReactQueryPage() {
     const {
         isPending,
         isError,
-        data: customers,
+        data,
+        //data: customers,
         error
 
     } = useQuery({
@@ -25,7 +26,7 @@ export default function ReactQueryPage() {
             if (!allCustomers) return null;
             console.log("is this doing anything at all")
           //  return allCustomers;  //
-            return response.data;
+            return response.data;  //works
         },
     });
     if (isPending) {
@@ -35,11 +36,11 @@ export default function ReactQueryPage() {
     if (isError) {
         return <span>Error: {error.message}</span>
     }
-    console.log(customers);
+    console.log(data);
     return (
         <>
         <ul>
-            {customers?.map((customer) => (
+            {data?.map((customer) => (
                 <li key={customer.id}>{customer.customerName}</li>
             ))}
         </ul>
