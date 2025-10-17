@@ -56,12 +56,16 @@ export default function App() {
                     Review next steps of this tutorial.
                 </a>
             </div>
-            <button onClick={signOut}>Sign out</button>
+
             <Link href="/reports/post">Reports</Link>
-            <Link href="tests/testpage">TestPage</Link>
             <p>
-            <Link href="tests/reactquerypage">TestPage</Link>
+            <Link href="tests/testpage">TestPage</Link>
             </p>
+            <p>
+            <Link href="tests/reactquerypage">ReactQuery Page</Link>
+            </p>
+            <br />
+            <button onClick={signOut}>Sign out</button>
         </main>
     )
 }
