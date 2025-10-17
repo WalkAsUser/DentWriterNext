@@ -6,7 +6,8 @@ import { useQuery } from '@tanstack/react-query'
 const client = generateClient<Schema>();
 
 
-export default function ReactQueryPage() {
+// @ts-ignore
+export default function ReactQueryPage({outComponent}) {
     var keyName = "customers";
     const {
         isPending,
@@ -19,7 +20,6 @@ export default function ReactQueryPage() {
         queryKey: [keyName],
         queryFn: async () => {
             const response = await client.models.Customer.list();
-
             const allCustomers = response.data;
 
 
@@ -39,6 +39,7 @@ export default function ReactQueryPage() {
     console.log(data);
     return (
         <>
+        {outComponent}
         <ul>
             {data?.map((customer) => (
                 <li key={customer.id}>{customer.customerName}</li>
