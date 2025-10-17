@@ -6,7 +6,8 @@ import ReactQueryPage from "@/pages/tests/reactquerypage";
 export default function TestPage() {
     return(
         <>
-            <ReactQueryPage outComponent={"Play Dirty"} />
+            <ReactQueryPage
+                outComponent={"Play Dirty"} />
         </>
 
     )

@@ -64,6 +64,9 @@ export default function App() {
             <p>
             <Link href="tests/reactquerypage">ReactQuery Page</Link>
             </p>
+            <p>
+                <Link href="tests/renderPageTest.tsx">Render Page Test</Link>
+            </p>
             <br />
             <button onClick={signOut}>Sign out</button>
         </main>
