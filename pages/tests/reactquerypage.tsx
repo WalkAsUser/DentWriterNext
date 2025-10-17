@@ -24,8 +24,8 @@ export default function ReactQueryPage() {
 
             if (!allCustomers) return null;
             console.log("is this doing anything at all")
-            return allCustomers;
-
+          //  return allCustomers;  //
+            return response.data;
         },
     });
     if (isPending) {
