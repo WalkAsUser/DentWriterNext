@@ -8,57 +8,59 @@ import {
     Paper
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import AddIcon from '@mui/icons-material/Add';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 
 const LaunchPage: React.FC = () => {
-    const [newMenuAnchor, setNewMenuAnchor] = useState<null | HTMLElement>(null);
-    const [reportsMenuAnchor, setReportsMenuAnchor] = useState<null | HTMLElement>(null);
+  const [newMenuAnchor, setNewMenuAnchor] = useState<null | HTMLElement>(null);
+  const [reportsMenuAnchor, setReportsMenuAnchor] = useState<null | HTMLElement>(null);
 
-    const handleNewMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setNewMenuAnchor(event.currentTarget);
-    };
+  const handleNewMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setNewMenuAnchor(event.currentTarget);
+  };
 
-    const handleNewMenuClose = () => {
-        setNewMenuAnchor(null);
-    };
+  const handleNewMenuClose = () => {
+    setNewMenuAnchor(null);
+  };
 
-    const handleReportsMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setReportsMenuAnchor(event.currentTarget);
-    };
+  const handleReportsMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setReportsMenuAnchor(event.currentTarget);
+  };
 
-    const handleReportsMenuClose = () => {
-        setReportsMenuAnchor(null);
-    };
+  const handleReportsMenuClose = () => {
+    setReportsMenuAnchor(null);
+  };
 
-    const handleLookup = () => {
-        // Add lookup functionality here
-        console.log('Lookup clicked');
-    };
+  const handleLookup = () => {
+    // Add lookup functionality here
+    console.log('Lookup clicked');
+  };
 
-    const handleNewInvoice = () => {
-        handleNewMenuClose();
-        // Add invoice creation functionality here
-        console.log('New Invoice clicked');
-    };
+  const handleNewInvoice = () => {
+    handleNewMenuClose();
+    // Add invoice creation functionality here
+    console.log('New Invoice clicked');
+  };
 
-    const handleNewVehicle = () => {
-        handleNewMenuClose();
-        // Add vehicle creation functionality here
-        console.log('New Vehicle clicked');
-    };
+  const handleNewVehicle = () => {
+    handleNewMenuClose();
+    // Add vehicle creation functionality here
+    console.log('New Vehicle clicked');
+  };
 
-    const handleNewDent = () => {
-        handleNewMenuClose();
-        // Add dent creation functionality here
-        console.log('New Dent clicked');
-    };
+  const handleNewDent = () => {
+    handleNewMenuClose();
+    // Add dent creation functionality here
+    console.log('New Dent clicked');
+  };
 
-    const handleTempReport = () => {
-        handleReportsMenuClose();
-        // Add temp report functionality here
-        console.log('Temp Report clicked');
-    };
+  const handleTempReport = () => {
+    handleReportsMenuClose();
+    // Add temp report functionality here
+    console.log('Temp Report clicked');
+  };
 
-    return (
+  return (
     <Box
       sx={{
         backgroundColor: '#000000',
@@ -137,6 +139,7 @@ const LaunchPage: React.FC = () => {
               <Button
                 variant="contained"
                 size="large"
+                startIcon={<AddIcon />}
                 onClick={handleNewMenuOpen}
                 fullWidth
                 sx={{
@@ -164,6 +167,7 @@ const LaunchPage: React.FC = () => {
               <Button
                 variant="contained"
                 size="large"
+                startIcon={<HistoryEduIcon />}
                 onClick={handleReportsMenuOpen}
                 fullWidth
                 sx={{
