@@ -1,0 +1,166 @@
+import React, { useState } from 'react';
+import {
+    Box,
+    Button,
+    Menu,
+    MenuItem,
+    Container,
+    Paper
+} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+
+const LaunchPage: React.FC = () => {
+    const [newMenuAnchor, setNewMenuAnchor] = useState<null | HTMLElement>(null);
+    const [reportsMenuAnchor, setReportsMenuAnchor] = useState<null | HTMLElement>(null);
+
+    const handleNewMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setNewMenuAnchor(event.currentTarget);
+    };
+
+    const handleNewMenuClose = () => {
+        setNewMenuAnchor(null);
+    };
+
+    const handleReportsMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setReportsMenuAnchor(event.currentTarget);
+    };
+
+    const handleReportsMenuClose = () => {
+        setReportsMenuAnchor(null);
+    };
+
+    const handleLookup = () => {
+        // Add lookup functionality here
+        console.log('Lookup clicked');
+    };
+
+    const handleNewInvoice = () => {
+        handleNewMenuClose();
+        // Add invoice creation functionality here
+        console.log('New Invoice clicked');
+    };
+
+    const handleNewVehicle = () => {
+        handleNewMenuClose();
+        // Add vehicle creation functionality here
+        console.log('New Vehicle clicked');
+    };
+
+    const handleNewDent = () => {
+        handleNewMenuClose();
+        // Add dent creation functionality here
+        console.log('New Dent clicked');
+    };
+
+    const handleTempReport = () => {
+        handleReportsMenuClose();
+        // Add temp report functionality here
+        console.log('Temp Report clicked');
+    };
+
+    return (
+        <Container maxWidth="md">
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '100vh',
+                    gap: 4
+                }}
+            >
+                {/* Logo Section */}
+                <Box
+                    sx={{
+                        width: 200,
+                        height: 200,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mb: 4
+                    }}
+                >
+                    {/* Replace this with your logo image */}
+                    <Paper
+                        elevation={3}
+                        sx={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: '#f5f5f5'
+                        }}
+                    >
+                        {/* Add your logo here, e.g., <img src="/path/to/logo.png" alt="Logo" /> */}
+                        <Box sx={{ fontSize: 24, color: '#999' }}>Your Logo</Box>
+                    </Paper>
+                </Box>
+
+                {/* Menu Buttons Section */}
+                <Box
+                    sx={{
+                        display: 'flex',
+                        gap: 2,
+                        flexWrap: 'wrap',
+                        justifyContent: 'center'
+                    }}
+                >
+                    {/* Lookup Button */}
+                    <Button
+                        variant="contained"
+                        size="large"
+                        startIcon={<SearchIcon />}
+                        onClick={handleLookup}
+                        sx={{ minWidth: 150 }}
+                    >
+                        Lookup
+                    </Button>
+
+                    {/* New Dropdown Menu */}
+                    <Box>
+                        <Button
+                            variant="contained"
+                            size="large"
+                            onClick={handleNewMenuOpen}
+                            sx={{ minWidth: 150 }}
+                        >
+                            New
+                        </Button>
+                        <Menu
+                            anchorEl={newMenuAnchor}
+                            open={Boolean(newMenuAnchor)}
+                            onClose={handleNewMenuClose}
+                        >
+                            <MenuItem onClick={handleNewInvoice}>Invoice</MenuItem>
+                            <MenuItem onClick={handleNewVehicle}>Vehicle</MenuItem>
+                            <MenuItem onClick={handleNewDent}>Dent</MenuItem>
+                        </Menu>
+                    </Box>
+
+                    {/* Reports Dropdown Menu */}
+                    <Box>
+                        <Button
+                            variant="contained"
+                            size="large"
+                            onClick={handleReportsMenuOpen}
+                            sx={{ minWidth: 150 }}
+                        >
+                            Reports
+                        </Button>
+                        <Menu
+                            anchorEl={reportsMenuAnchor}
+                            open={Boolean(reportsMenuAnchor)}
+                            onClose={handleReportsMenuClose}
+                        >
+                            <MenuItem onClick={handleTempReport}>Temp</MenuItem>
+                        </Menu>
+                    </Box>
+                </Box>
+            </Box>
+        </Container>
+    );
+};
+
+export default LaunchPage;
