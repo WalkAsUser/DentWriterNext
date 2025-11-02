@@ -59,108 +59,135 @@ const LaunchPage: React.FC = () => {
     };
 
     return (
-        <Container maxWidth="md">
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minHeight: '100vh',
-                    gap: 4
-                }}
+    <Box
+      sx={{
+        backgroundColor: '#000000',
+        minHeight: '100vh',
+        width: '100%'
+      }}
+    >
+      <Container maxWidth="md">
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: '100vh',
+            gap: 4
+          }}
+        >
+          {/* Logo Section */}
+          <Box
+            sx={{
+              width: 200,
+              height: 200,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              mb: 4
+            }}
+          >
+            {/* Replace this with your logo image */}
+            <Paper
+              elevation={3}
+              sx={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#f5f5f5'
+              }}
             >
-                {/* Logo Section */}
-                <Box
-                    sx={{
-                        width: 200,
-                        height: 200,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mb: 4
-                    }}
-                >
-                    {/* Replace this with your logo image */}
-                    <Paper
-                        elevation={3}
-                        sx={{
-                            width: '100%',
-                            height: '100%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: '#f5f5f5'
-                        }}
-                    >
-                        {/* Add your logo here, e.g., <img src="/path/to/logo.png" alt="Logo" /> */}
-                        <Box sx={{ fontSize: 24, color: '#999' }}>Your Logo</Box>
-                    </Paper>
-                </Box>
+              {/* Add your logo here, e.g., <img src="/path/to/logo.png" alt="Logo" /> */}
+              <Box sx={{ fontSize: 24, color: '#999' }}>Your Logo</Box>
+            </Paper>
+          </Box>
 
-                {/* Menu Buttons Section */}
-                <Box
-                    sx={{
-                        display: 'flex',
-                        gap: 2,
-                        flexWrap: 'wrap',
-                        justifyContent: 'center'
-                    }}
-                >
-                    {/* Lookup Button */}
-                    <Button
-                        variant="contained"
-                        size="large"
-                        startIcon={<SearchIcon />}
-                        onClick={handleLookup}
-                        sx={{ minWidth: 150 }}
-                    >
-                        Lookup
-                    </Button>
+          {/* Menu Buttons Section - Stacked Vertically */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+              width: '100%',
+              maxWidth: 300
+            }}
+          >
+            {/* Lookup Button */}
+            <Button
+              variant="contained"
+              size="large"
+              startIcon={<SearchIcon />}
+              onClick={handleLookup}
+              fullWidth
+              sx={{
+                backgroundColor: '#4caf50',
+                '&:hover': {
+                  backgroundColor: '#45a049'
+                }
+              }}
+            >
+              Lookup
+            </Button>
 
-                    {/* New Dropdown Menu */}
-                    <Box>
-                        <Button
-                            variant="contained"
-                            size="large"
-                            onClick={handleNewMenuOpen}
-                            sx={{ minWidth: 150 }}
-                        >
-                            New
-                        </Button>
-                        <Menu
-                            anchorEl={newMenuAnchor}
-                            open={Boolean(newMenuAnchor)}
-                            onClose={handleNewMenuClose}
-                        >
-                            <MenuItem onClick={handleNewInvoice}>Invoice</MenuItem>
-                            <MenuItem onClick={handleNewVehicle}>Vehicle</MenuItem>
-                            <MenuItem onClick={handleNewDent}>Dent</MenuItem>
-                        </Menu>
-                    </Box>
-
-                    {/* Reports Dropdown Menu */}
-                    <Box>
-                        <Button
-                            variant="contained"
-                            size="large"
-                            onClick={handleReportsMenuOpen}
-                            sx={{ minWidth: 150 }}
-                        >
-                            Reports
-                        </Button>
-                        <Menu
-                            anchorEl={reportsMenuAnchor}
-                            open={Boolean(reportsMenuAnchor)}
-                            onClose={handleReportsMenuClose}
-                        >
-                            <MenuItem onClick={handleTempReport}>Temp</MenuItem>
-                        </Menu>
-                    </Box>
-                </Box>
+            {/* New Dropdown Menu */}
+            <Box>
+              <Button
+                variant="contained"
+                size="large"
+                onClick={handleNewMenuOpen}
+                fullWidth
+                sx={{
+                  backgroundColor: '#4caf50',
+                  '&:hover': {
+                    backgroundColor: '#45a049'
+                  }
+                }}
+              >
+                New
+              </Button>
+              <Menu
+                anchorEl={newMenuAnchor}
+                open={Boolean(newMenuAnchor)}
+                onClose={handleNewMenuClose}
+              >
+                <MenuItem onClick={handleNewInvoice}>Invoice</MenuItem>
+                <MenuItem onClick={handleNewVehicle}>Vehicle</MenuItem>
+                <MenuItem onClick={handleNewDent}>Dent</MenuItem>
+              </Menu>
             </Box>
-        </Container>
-    );
+
+            {/* Reports Dropdown Menu */}
+            <Box>
+              <Button
+                variant="contained"
+                size="large"
+                onClick={handleReportsMenuOpen}
+                fullWidth
+                sx={{
+                  backgroundColor: '#4caf50',
+                  '&:hover': {
+                    backgroundColor: '#45a049'
+                  }
+                }}
+              >
+                Reports
+              </Button>
+              <Menu
+                anchorEl={reportsMenuAnchor}
+                open={Boolean(reportsMenuAnchor)}
+                onClose={handleReportsMenuClose}
+              >
+                <MenuItem onClick={handleTempReport}>Temp</MenuItem>
+              </Menu>
+            </Box>
+          </Box>
+        </Box>
+      </Container>
+    </Box>
+  );
 };
 
 export default LaunchPage;
