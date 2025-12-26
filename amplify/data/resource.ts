@@ -104,7 +104,15 @@ const schema = a.schema({
   }).authorization((allow) => [
     allow.authenticated(),
     allow.publicApiKey(),
-    ])
+    ]),
+
+  //Created first time loggin in //
+  Enabled: a.model({
+    enabled: a.boolean().required(),
+    disableDate: a.datetime().required(),
+  }).authorization((allow) => [
+    allow.owner().to(['read','create'])
+  ])
 
 ///***///
 

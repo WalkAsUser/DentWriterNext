@@ -36,8 +36,8 @@ export default function App() {
 
     return (
         <main>
-            <h1>{user?.userId} and such</h1>
-            <h1>{user?.signInDetails?.loginId} todos</h1>
+            <h1>{user?.userId} userId</h1>
+            <h1>{user?.signInDetails?.loginId} user.signInDetails</h1>
             <h1>My todos</h1>
             <button onClick={createTodo}>+ new</button>
             <ul>
