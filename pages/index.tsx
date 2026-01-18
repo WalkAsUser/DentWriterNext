@@ -29,6 +29,11 @@ export default function App() {
         }else {
             console.log("Customer DOES exist")
             console.log(existence[0].disableDate)
+            if(!existence[0].enabled){
+                console.log("NOT ENABLED")
+            }else {
+                console.log("ENABLED")
+            }
         }
     }
 
