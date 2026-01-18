@@ -16,8 +16,15 @@ export default function App() {
         const { data: existence} = await client.models.Enabled.list();
         if(existence.length === 0){
             console.log("Customer does not exist")
+            const entry = await client.models.Enabled.create(
+                {
+                    enabled: true,
+                    disableDate: new Date().toISOString(),
+                }
+            )
         }else {
             console.log("Customer DOES exist")
+            console.log(existence[0].disableDate)
         }
     }
 
