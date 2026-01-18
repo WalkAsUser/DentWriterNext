@@ -14,8 +14,11 @@ export default function App() {
 
     async function customerExists(){
         const { data: existence} = await client.models.Enabled.list();
-        console.log("the Length of the list is:")
-        console.log(existence.length);
+        if(existence.length === 0){
+            console.log("Customer does not exist")
+        }else {
+            console.log("Customer DOES exist")
+        }
     }
 
     function listTodos() {
