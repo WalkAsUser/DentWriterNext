@@ -16,10 +16,14 @@ export default function App() {
         const { data: existence} = await client.models.Enabled.list();
         if(existence.length === 0){
             console.log("Customer does not exist")
+            //Date Plus One Month//
+            const dateCreate = new Date();
+            dateCreate.setMonth(dateCreate.getMonth() + 1);
+            //--------//
             const entry = await client.models.Enabled.create(
                 {
                     enabled: true,
-                    disableDate: new Date().toISOString(),
+                    disableDate: dateCreate.toISOString(),
                 }
             )
         }else {
