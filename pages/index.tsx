@@ -12,6 +12,12 @@ export default function App() {
 
     const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
+    async function customerExists(){
+        const { data: existence} = await client.models.Enabled.list();
+        console.log("the Length of the list is:")
+        console.log(existence.length);
+    }
+
     function listTodos() {
         client.models.Todo.observeQuery().subscribe({
             next: (data) => setTodos([...data.items]),
@@ -55,6 +61,9 @@ export default function App() {
                 <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-pages-router/">
                     Review next steps of this tutorial.
                 </a>
+            </div>
+            <div>
+                <button onClick={customerExists}>Check if customer exists</button>
             </div>
 
             <Link href="/reports/post">Reports</Link>
